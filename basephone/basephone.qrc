@@ -1,0 +1,16 @@
+<RCC>
+    <qresource prefix="/">
+        <file>qml/images/background.png</file>
+        <file>qml/images/doorphone_logo.png</file>
+        <file>qml/images/Gear-256.png</file>
+        <file>qml/images/Renesas_Electronics_logo.svg.png</file>
+        <file>qml/images/Sun.png</file>
+        <file>qml/images/Welcome_transparent.png</file>
+        <file>qml/Border.qml</file>
+        <file>qml/main.qml</file>
+        <file>qml/Streamplayer.qml</file>
+        <file>qml/Textfield.qml</file>
+        <file>qml/images/play_button.png</file>
+        <file>qml/images/stop_button.png</file>
+    </qresource>
+</RCC>

@@ -1,0 +1,5 @@
+Makefile
+basephone
+qrc_basephone.cpp
+
+*.o
