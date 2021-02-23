@@ -39,7 +39,7 @@
                                  "! rtph264pay pt=96 name=pay0 config-interval=3 )"
 
 #define MIPI_CAM_PIPELINE_FMT_STR_DEFAULT "( v4l2src device=\"%s\" io-mode=dmabuf-import "               \
-                                          "! video/x-raw, format=YUY2, width=1280, height=960 "          \
+                                          "! video/x-raw, format=YUY2, width=1280, height=960, framerate=30/1 "          \
                                           "! vspfilter "                                                 \
                                           "! video/x-raw, format=NV12 "                                  \
                                           "! omxh264enc target-bitrate=4000000 quant-p-frames=0 "        \
@@ -48,7 +48,7 @@
                                           "! rtph264pay pt=96 name=pay0 config-interval=3 )"
 
 #define MIPI_CAM_PIPELINE_FMT_STR "( v4l2src device=\"%s\" io-mode=dmabuf-import "               \
-                                  "! video/x-raw, format=YUY2, width=1280, height=960 "          \
+                                  "! video/x-raw, format=YUY2, width=1280, height=960, framerate=30/1 "          \
                                   "! vspfilter "                                                 \
                                   "! video/x-raw, format=NV12, width=%s, height=%s "             \
                                   "! omxh264enc target-bitrate=4000000 quant-p-frames=0 "        \
