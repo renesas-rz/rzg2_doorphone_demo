@@ -78,12 +78,9 @@ if [ "$1" == "usb" ] ; then
 		exit
 	fi
 
-	# Check if USB camera is attached
-	if [ -e /dev/video10 ] ; then
-		VIDEO=video10
-	elif [ -e /dev/video8 ] ; then
-		VIDEO=video8
-	else
+	VIDEO=$( grep -rl "UVC" /sys/class/video4linux/*/name | awk -F '/' 'NR==1 { print $5 }' )
+
+	if [ "$VIDEO" == "" ]; then
 		echo "ERROR: USB Camera not detected"
 		exit
 	fi
