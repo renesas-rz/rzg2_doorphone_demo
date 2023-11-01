@@ -98,9 +98,9 @@ if [ "$IS_RZG2E" == "1" ] ; then
 fi
 
 if ! ifconfig | grep 192.168.5.182 ; then
-        echo "Setting IP address"
-        ifconfig eth0 192.168.5.182
-        sleep 1
+	echo "Setting IP address"
+	ifconfig eth0 192.168.5.182
+	sleep 1
 fi
 
 # MIPI Camera
