@@ -1,6 +1,5 @@
 #!/bin/bash
 
-
 USAGE="\n\
 usage:\n\
    ./start.sh mipi          - start demo using MIPI camera (single board)\n\
@@ -22,20 +21,20 @@ fi
 if  [ "$1" == "stop" ] ; then
 
 	# Stop basephone
-	if ps aux | grep -v "grep" | grep "basephone" ; then
-		PID=$(ps aux | grep -v "grep" | grep "basephone" | awk '{print $1}')
+	if ps | grep -v "grep" | grep "basephone" ; then
+		PID=$(ps | grep -v "grep" | grep "basephone" | awk '{print $1}')
 		echo kill -s USR1 $PID
-		kill -s USR1 $PID
+		kill $PID
 		sleep 1
 	else
 		echo "basephone not running"
 	fi
 
 	# Stop outdoor
-	if ps aux | grep -v "grep" | grep "outdoor" ; then
-		PID=$(ps aux | grep -v "grep" | grep "outdoor" | awk '{print $1}')
+	if ps | grep -v "grep" | grep "outdoor" ; then
+		PID=$(ps | grep -v "grep" | grep "outdoor" | awk '{print $1}')
 		echo kill -s USR1 $PID
-		kill -s USR1 $PID
+		kill $PID
 	else
 		echo "outdoor not running"
 	fi
