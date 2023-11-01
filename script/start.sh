@@ -52,7 +52,9 @@ fi
 
 # Detect MIPI camera
 if [ "$1" == "mipi" ] ; then
-	if [ -e /sys/bus/i2c/drivers/ov5645/3-003c ] ; then
+	if [ "$IS_RZG2E" == "0" ] && [ -e /sys/bus/i2c/drivers/ov5645/2-003c ] ; then
+		MIPI=1
+	elif [ "$IS_RZG2E" == "1" ] && [ -e /sys/bus/i2c/drivers/ov5645/3-003c ] ; then
 		MIPI=1
 	else
 		echo "ERROR: MIPI Camera not detected"
