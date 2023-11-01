@@ -67,7 +67,10 @@ if [ "$1" == "usb" ] ; then
 	if [ ! -e /sys/bus/usb/drivers/uvcvideo ] ; then 
 		# USB Video Class driver not installed
 		# Try to install the module
-		modprobe uvcvideo
+		modprobe uvcvideo allocators=1
+	else
+		rmmod uvcvideo
+		modprobe uvcvideo allocators=1
 	fi
 	# check again
 	if [ ! -e /sys/bus/usb/drivers/uvcvideo ] ; then
