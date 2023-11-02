@@ -19,9 +19,9 @@
 /* ---------- Macros ---------- */
 
 #define USB_CAM_PIPELINE_FMT_STR_DEFAULT "( v4l2src device=\"%s\" io-mode=dmabuf "               \
-                                         "! video/x-raw, format=YUY2, width=1280, height=720 "   \
+                                         "! video/x-raw, format=YUY2, width=800, height=600 "    \
                                          "! vspmfilter dmabuf-use=true "                         \
-                                         "! video/x-raw, format=NV12 "                           \
+                                         "! video/x-raw, format=NV12, width=1280, height=720 "   \
                                          "! omxh264enc target-bitrate=4000000 quant-p-frames=0 " \
                                          "! video/x-h264, profile=high "                         \
                                          "! h264parse "                                          \
