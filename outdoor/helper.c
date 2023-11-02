@@ -77,7 +77,7 @@ void error_set(GError **error, const gint err_code, const gchar *format, ...)
     va_end(args);
 
     /* Set error code and message to GError */
-    g_set_error(error, g_quark_from_string(err_str), err_code, err_str);
+    g_set_error(error, g_quark_from_string(err_str), err_code, "%s", err_str);
 }
 
 gboolean file_get(const gchar *dir, const gchar *ext, GArray **arr, gint *size)
