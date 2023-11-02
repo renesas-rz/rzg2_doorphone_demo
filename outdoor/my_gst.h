@@ -28,10 +28,10 @@
                                          "! video/x-h264, stream-format=avc, alignment=au "      \
                                          "! rtph264pay pt=96 name=pay0 config-interval=3 )"
 
-#define USB_CAM_PIPELINE_FMT_STR "( v4l2src device=\"%s\" "                              \
+#define USB_CAM_PIPELINE_FMT_STR "( v4l2src device=\"%s\" io-mode=dmabuf "               \
                                  "! video/x-raw, format=YUY2, width=%s, height=%s "      \
-                                 "! videoconvert "                                       \
-                                 "! video/x-raw, format=NV12, "                          \
+                                 "! vspmfilter dmabuf-use=true "                         \
+                                 "! video/x-raw, format=NV12 "                           \
                                  "! omxh264enc target-bitrate=4000000 quant-p-frames=0 " \
                                  "! video/x-h264, profile=high "                         \
                                  "! h264parse "                                          \
