@@ -99,28 +99,15 @@ const gchar *rzg2e_mipi_init_steps[] =
     NULL
 };
 
-/* Commands to initialize MIPI camera for RZ/G2M */
-const gchar *rzg2m_mipi_init_steps[] =
+/* Commands to initialize MIPI camera for RZ/G2M/N */
+const gchar *rzg2mn_mipi_init_steps[] =
 {
+    /* Reset all links before enabling new links */
     "media-ctl -d /dev/media0 -r",
 
-    /* Link "VIN0" to "CSI20/VC0". After this, we can start capturing video data from "/dev/video0"
-     * which is associated with "VIN0" */
-    "media-ctl -d /dev/media0 -l \"'rcar_csi2 fea80000.csi2':1 -> 'VIN0 output':0 [1]\"",
-    "media-ctl -d /dev/media0 -V \"'rcar_csi2 fea80000.csi2':1 [fmt:UYVY8_2X8/1280x960 field:none]\"",
-    "media-ctl -d /dev/media0 -V \"'ov5645 2-003c':0 [fmt:UYVY8_2X8/1280x960 field:none]\"",
-
-    NULL
-};
-
-/* Commands to initialize MIPI camera for RZ/G2N */
-const gchar *rzg2n_mipi_init_steps[] =
-{
-    "media-ctl -d /dev/media0 -r",
-
-    /* Link "VIN0" to "CSI20/VC0". After this, we can start capturing video data from "/dev/video0"
-     * which is associated with "VIN0" */
-    "media-ctl -d /dev/media0 -l \"'rcar_csi2 fea80000.csi2':1 -> 'VIN0 output':0 [1]\"",
+    /* Link "VIN4" to "CSI20/VC0". After this, we can start capturing video data from "/dev/video4"
+     * which is associated with "VIN4" */
+    "media-ctl -d /dev/media0 -l \"'rcar_csi2 fea80000.csi2':1 -> 'VIN4 output':0 [1]\"",
     "media-ctl -d /dev/media0 -V \"'rcar_csi2 fea80000.csi2':1 [fmt:UYVY8_2X8/1280x960 field:none]\"",
     "media-ctl -d /dev/media0 -V \"'ov5645 2-003c':0 [fmt:UYVY8_2X8/1280x960 field:none]\"",
 
@@ -129,6 +116,9 @@ const gchar *rzg2n_mipi_init_steps[] =
 
 const gchar *supported_platforms[] = { "ek874", "hihope-rzg2m", "hihope-rzg2n" };
 
+/* List of MIPI camera based on RZ/G2 platforms */
+const gchar *mipi_camera_fds[] = { "video0", "video4", "video4" };
+
 /* Warning: "mipi_init_steps" array must have the same size as "supported_platforms" array */
 const gchar **mipi_init_steps[] =
 {
@@ -136,10 +126,10 @@ const gchar **mipi_init_steps[] =
     rzg2e_mipi_init_steps,
 
     /* MIPI initialization steps on RZ/G2M platform */
-    rzg2m_mipi_init_steps,
+    rzg2mn_mipi_init_steps,
 
     /* MIPI initialization steps on RZ/G2N platform */
-    rzg2n_mipi_init_steps
+    rzg2mn_mipi_init_steps
 };
 
 /* ---------- Private functions ---------- */
@@ -234,7 +224,7 @@ struct camera_t *mipi_camera_init()
             /* Set required data to "camera_t" object.
              * The order of functions is important */
             camera_set_type(mipi_camera, MIPI_CAMERA);
-            camera_set_id(mipi_camera, "video0");
+            camera_set_id(mipi_camera, mipi_camera_fds[platform_index]);
         }
     }
 
