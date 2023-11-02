@@ -78,9 +78,9 @@ if [ "$1" == "usb" ] ; then
 		exit
 	fi
 
-	VIDEO=$( grep -rl "UVC" /sys/class/video4linux/*/name | awk -F '/' 'NR==1 { print $5 }' )
+	USB_CAM_FD=$( grep -rl "UVC" /sys/class/video4linux/*/name | awk -F '/' 'NR==1 { print $5 }' )
 
-	if [ "$VIDEO" == "" ]; then
+	if [ "$USB_CAM_FD" == "" ]; then
 		echo "ERROR: USB Camera not detected"
 		exit
 	fi
@@ -111,7 +111,7 @@ fi
 # USB Camera
 if [ "$USB" == "1" ] ; then
 
-	CAMERA="-u $VIDEO"
+	CAMERA="-u $USB_CAM_FD"
 	CAMERA_TEXT="USB"
 fi
 
