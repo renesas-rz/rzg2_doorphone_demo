@@ -23,7 +23,7 @@ if  [ "$1" == "stop" ] ; then
 	# Stop basephone
 	if ps | grep -v "grep" | grep "basephone" ; then
 		PID=$(ps | grep -v "grep" | grep "basephone" | awk '{print $1}')
-		echo kill -s USR1 $PID
+		echo kill $PID
 		kill $PID
 		sleep 1
 	else
@@ -33,7 +33,7 @@ if  [ "$1" == "stop" ] ; then
 	# Stop outdoor
 	if ps | grep -v "grep" | grep "outdoor" ; then
 		PID=$(ps | grep -v "grep" | grep "outdoor" | awk '{print $1}')
-		echo kill -s USR1 $PID
+		echo kill $PID
 		kill $PID
 	else
 		echo "outdoor not running"
