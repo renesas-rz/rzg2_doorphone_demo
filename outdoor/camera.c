@@ -99,8 +99,8 @@ const gchar *rzg2e_mipi_init_steps[] =
     NULL
 };
 
-/* Commands to initialize MIPI camera for RZ/G2M/N */
-const gchar *rzg2mn_mipi_init_steps[] =
+/* Commands to initialize MIPI camera for RZ/G2M/N/H */
+const gchar *rzg2mnh_mipi_init_steps[] =
 {
     /* Reset all links before enabling new links */
     "media-ctl -d /dev/media0 -r",
@@ -114,10 +114,10 @@ const gchar *rzg2mn_mipi_init_steps[] =
     NULL
 };
 
-const gchar *supported_platforms[] = { "ek874", "hihope-rzg2m", "hihope-rzg2n" };
+const gchar *supported_platforms[] = { "ek874", "hihope-rzg2m", "hihope-rzg2n", "hihope-rzg2h" };
 
 /* List of MIPI camera based on RZ/G2 platforms */
-const gchar *mipi_camera_fds[] = { "video0", "video4", "video4" };
+const gchar *mipi_camera_fds[] = { "video0", "video4", "video4", "video4" };
 
 /* Warning: "mipi_init_steps" array must have the same size as "supported_platforms" array */
 const gchar **mipi_init_steps[] =
@@ -126,10 +126,13 @@ const gchar **mipi_init_steps[] =
     rzg2e_mipi_init_steps,
 
     /* MIPI initialization steps on RZ/G2M platform */
-    rzg2mn_mipi_init_steps,
+    rzg2mnh_mipi_init_steps,
 
     /* MIPI initialization steps on RZ/G2N platform */
-    rzg2mn_mipi_init_steps
+    rzg2mnh_mipi_init_steps,
+
+    /* MIPI initialization steps on RZ/G2H platform */
+    rzg2mnh_mipi_init_steps
 };
 
 /* ---------- Private functions ---------- */
