@@ -99,6 +99,14 @@ This demo requires 2 boards, called "outdoor" and "basephone".
   user@ubuntu:~/doorphone_rzg2$ scp basephone/basephone outdoor/outdoor script/start.sh root@<IP address>:/home/root/doorphone_rzg2/
   ```
 
+* Run the below commands to make `start.sh` script, `basephone`, and `outdoor` binaries executable:
+
+  ```base
+  root@<board>:~/doorphone_rzg2# chmod 755 basephone
+  root@<board>:~/doorphone_rzg2# chmod 755 outdoor
+  root@<board>:~/doorphone_rzg2# chmod 755 start.sh
+  ```
+
 * [Copy MP4 videos](#sample-mp4-movies) to `/home/root/doorphone_rzg2/` directory as below:
 
   ```text
